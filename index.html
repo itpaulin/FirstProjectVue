@@ -9,7 +9,10 @@
   <body>
     <div id="app">
       <p v-if="isVisible">{{ message }}</p>
-      <button @click="isVisible = true">Aperte</button>
+      <button @click="toggle()">Aperte</button> |
+      <button @dblclick="reverse()">dbclick</button>
+      <br />
+      <input type="text" name="message" id="message" v-model="message" />
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script>
@@ -19,7 +22,14 @@
           message: "Punk",
           isVisible: false,
         },
-        methods: {},
+        methods: {
+          toggle: function () {
+            this.isVisible = !this.isVisible;
+          },
+          reverse: function () {
+            this.message = this.message.split("").reverse().join("");
+          },
+        },
       });
     </script>
   </body>
